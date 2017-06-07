@@ -48,7 +48,7 @@ class AutorDAO(object):
         conn = Infra.conectar()
         cur = conn.cursor()
         try:
-            cur.execute("""UPDATE Autor SET nome = (%s), cpf = (%s), citacao = (%s) WHERE id_autor = (%s);""", (nome, cpf, id, nome_citacao))
+            cur.execute("""UPDATE Autor SET nome = (%s), cpf = (%s), citacao = (%s) WHERE id_autor = (%s);""", (nome, cpf, nome_citacao, id))
             conn.commit()
             print "Alterado com sucesso!"
         except:

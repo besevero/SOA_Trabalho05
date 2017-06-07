@@ -25,17 +25,17 @@ def get_autores_id(id):
     return jsonify(autores_id)
 
 
-@app.route('/trab05/autores/<int:id>/<string:nome>/<string:cpf>', methods=['POST'])
-def post_autores_id(id, nome, cpf):
+@app.route('/trab05/autores/<int:id>/<string:nome>/<string:cpf>/<string:citacao>', methods=['POST'])
+def post_autores_id(id, nome, cpf, citacao):
     autor = AutorDAO()
-    autor.incluir_autor(id, nome, cpf)
+    autor.incluir_autor(id, nome, cpf, citacao)
     return jsonify({'result': True})
 
 
-@app.route('/trab05/autores/<int:id>/<string:nome>/<string:cpf>', methods=['PUT'])
-def update_autores_id(id, nome, cpf):
+@app.route('/trab05/autores/<int:id>/<string:nome>/<string:cpf>/<string:citacao>', methods=['PUT'])
+def update_autores_id(id, nome, cpf, citacao):
     autor = AutorDAO()
-    autor.alterar_autor(id, nome, cpf)
+    autor.alterar_autor(id, nome, cpf, citacao)
     return jsonify({'result': True})
 
 
@@ -45,7 +45,7 @@ def delete_autor(id):
     autor.excluir_autor(id)
     return jsonify({'result': True})
 
-@app.route('/trab05/artigo', methods=['GET'])
+@app.route('/trab05/artigos', methods=['GET'])
 def get_artigos():
     artigos = artigo.consulta_Publicacao()
     return jsonify(artigos)
@@ -53,11 +53,11 @@ def get_artigos():
 
 @app.route('/trab05/artigos/<int:id>', methods=['GET'])
 def get_artigos_id(id):
-    artigo_id = artigo.consulta_Publicacao(id)
+    artigo_id = artigo.consulta_publicacao_id(id)
     return jsonify(artigo_id)
 
 
-@app.route('/trab05/artigo/<int:id>/<string:nome>/<string:tipo>', methods=['POST'])
+@app.route('/trab05/artigos/<int:id>/<string:nome>/<string:tipo>', methods=['POST'])
 def post_artigo_id(id, nome, tipo):
     artigo.incluir_publicacao(id, nome, tipo)
     return jsonify({'result': True})
@@ -74,7 +74,7 @@ def delete_artigo(id):
     artigo.excluir_publicacao(id)
     return jsonify({'result': True})
 
-@app.route('/trab05/artigos/', methods=['GET'])
+@app.route('/trab05/artigos/citacao', methods=['GET'])
 def get_artigos_citacao():
     artigos = artigo.consulta_geral()
     return jsonify(artigos)
