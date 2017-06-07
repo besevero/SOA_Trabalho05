@@ -6,11 +6,13 @@
 
 ALTER TABLE Artigo ADD CONSTRAINT PK_Artigo PRIMARY KEY (id_artigo);
 
+drop table AutorArtigo;
 
 CREATE TABLE Autor (
  id_autor INT NOT NULL,
  nome VARCHAR(200),
- cpf VARCHAR(11) not null
+ cpf VARCHAR(11) not null,
+ citacao VARCHAR(50) NULL
 );
 
 ALTER TABLE Autor ADD CONSTRAINT PK_Autor PRIMARY KEY (id_autor);
@@ -84,9 +86,20 @@ ALTER TABLE Edicao ADD CONSTRAINT FK_Edicao_2 FOREIGN KEY (id_local) REFERENCES 
 ALTER TABLE ArtigoEdicao ADD CONSTRAINT FK_ArtigoEdicao_0 FOREIGN KEY (id_edicao,id_forum,id_qualis,id_local) REFERENCES Edicao (id_edicao,id_forum,id_qualis,id_local);
 ALTER TABLE ArtigoEdicao ADD CONSTRAINT FK_ArtigoEdicao_1 FOREIGN KEY (id_artigo) REFERENCES Artigo (id_artigo);
 
+select * from forum;
+
+select b.nome , q.codqualis from Artigo b, ArtigoEdicao c, AutorArtigo d, Autor a, Edicao e, Qualis q ,Forum f where b.id_artigo = c.id_artigo and b.id_artigo = d.id_artigo and 
+a.id_autor = d.id_autor and c.id_edicao = e.id_edicao and e.id_forum = f.id_forum and e.id_qualis = q.id_qualis and a.nome like '%Fa%';
+
+select b.nome, q.codqualis from Artigo b, ArtigoEdicao c, AutorArtigo d, Autor a, Edicao
+        e, Qualis q, Forum f where b.id_artigo = c.id_artigo and b.id_artigo = d.id_artigo and
+        a.id_autor = d.id_autor and c.id_edicao = e.id_edicao and e.id_forum = f.id_forum and e.id_qualis = q.id_qualis and a.nome like '%Fa%';
+
+        select b.nome, q.codqualis from Artigo b, ArtigoEdicao c, AutorArtigo d, Autor a, Edicao
+        e, Qualis q, Forum f where b.id_artigo = c.id_artigo and b.id_artigo = d.id_artigo and
+        a.id_autor = d.id_autor and c.id_edicao = e.id_edicao and e.id_forum = f.id_forum and e.id_qualis = q.id_qualis and a.id_autor = 1;
 
 
---select a.nome from artigo b, artigoEdicao c, autorArtigo d, autor a where b.id_artigo = c.id_artigo and b.id_artigo = d.id_artigo and 
---a.id_autor = d.id_autor and b.id_artigo=1;
-
-
+        select b.nome, q.codqualis, b.tipoartigo from Artigo b, ArtigoEdicao c, AutorArtigo d, Autor a, Edicao
+        e, Qualis q, Forum f where b.id_artigo = c.id_artigo and b.id_artigo = d.id_artigo and
+        a.id_autor = d.id_autor and c.id_edicao = e.id_edicao and e.id_forum = f.id_forum and e.id_qualis = q.id_qualis and a.id_autor = 1;

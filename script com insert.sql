@@ -3,9 +3,9 @@ INSERT INTO Artigo VALUES (2, 'ResearchOps: The case for DevOps in scientific ap
 INSERT INTO Artigo VALUES (3, 'Architecting Cloud Tools using Software Product Line Techniques', 'R');
 
 
-INSERT INTO Autor VALUES (1, 'Leonardo Azevedo', '12345678901');
-INSERT INTO Autor VALUES (2, 'Luiz Alexandre', '04303590711');
-INSERT INTO Autor VALUES (3, 'Fabricio Felipe', '10987654321');
+INSERT INTO Autor VALUES (1, 'Leonardo Azevedo', '12345678901','AZEVEDO,L');
+INSERT INTO Autor VALUES (2, 'Luiz Alexandre', '04303590711', 'COSTA,L,A');
+INSERT INTO Autor VALUES (3, 'Fabricio Felipe', '10987654321', 'CARVALHO,F');
 
 
 INSERT INTO AutorArtigo VALUES (1, 1);

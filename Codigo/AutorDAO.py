@@ -1,8 +1,4 @@
-import psycopg2
-
 import Infra
-
-
 
 class AutorDAO(object):
     def __init__(self):
@@ -38,21 +34,21 @@ class AutorDAO(object):
             print "   ", row
         return rows
 
-    def incluir_autor(self, id, nome, cpf):
+    def incluir_autor(self, id, nome, cpf, nome_citacao):
         conn = Infra.conectar()
         cur = conn.cursor()
         try:
-            cur.execute("""INSERT INTO Autor VALUES(%s,%s,%s);""", (id, nome, cpf))
+            cur.execute("""INSERT INTO Autor VALUES(%s,%s,%s, %s);""", (id, nome, cpf, nome_citacao))
             conn.commit()
             print "Inserido com sucesso!"
         except:
             print "Erro incluir"
 
-    def alterar_autor(self, id, nome, cpf):
+    def alterar_autor(self, id, nome, cpf, nome_citacao):
         conn = Infra.conectar()
         cur = conn.cursor()
         try:
-            cur.execute("""UPDATE Autor SET nome = (%s), cpf = (%s) WHERE id_autor = (%s);""", (nome, cpf, id))
+            cur.execute("""UPDATE Autor SET nome = (%s), cpf = (%s), citacao = (%s) WHERE id_autor = (%s);""", (nome, cpf, id, nome_citacao))
             conn.commit()
             print "Alterado com sucesso!"
         except:
@@ -67,10 +63,9 @@ class AutorDAO(object):
             print "Excluido com sucesso!"
         except:
             print "Erro delete"
-    #Fabricio Felipe
 
 
 
 
 
-#
+
